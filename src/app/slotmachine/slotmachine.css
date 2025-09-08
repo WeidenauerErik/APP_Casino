@@ -5,15 +5,15 @@
 
 .slotmachine-grid {
     display: grid;
-    grid-template-columns: repeat(3, 100px);
+    grid-template-columns: repeat(3, 200px);
     gap: 10px;
     justify-content: center;
     margin: 20px 0;
 }
 
 .slotmachine-reel {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     border: 2px solid #000;
     border-radius: 10px;
     overflow: hidden;
