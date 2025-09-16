@@ -3,7 +3,8 @@
 import { useState } from "react";
 
 export default function Payment() {
-    const [selectedMethod, setSelectedMethod] = useState(null);
+
+    const [selectedMethod, setSelectedMethod] = useState('card');
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-center text-white px-4">
