@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function Payment() {
+export default function Page() {
 
     const [selectedMethod, setSelectedMethod] = useState('card');
 
