@@ -1,7 +1,7 @@
-import Slotmachine from "./slotmachine/slotmachine";
+import Link from "next/link";
 
 export default function Home() {
-  return (
-    <Slotmachine/>
-  );
+    return (
+        <></>
+    );
 }

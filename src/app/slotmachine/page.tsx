@@ -2,7 +2,7 @@
 
 import React, { JSX, useEffect, useState } from "react";
 
-export default function Slotmachine() {
+export default function Page() {
     const symbols = [
         "andreasFink.jpeg",
         "florianWeiss.jpg",

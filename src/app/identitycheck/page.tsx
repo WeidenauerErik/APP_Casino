@@ -3,7 +3,7 @@
 import React from "react";
 import Webcam from "react-webcam";
 
-export default function IdentityCheck() {
+export default function Page() {
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white px-4">
             <div className="bg-gray-800 rounded-2xl shadow-lg p-6 max-w-md w-full text-center">
