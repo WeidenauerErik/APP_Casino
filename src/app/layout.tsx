@@ -33,7 +33,7 @@ export default function RootLayout({
             <h1 className="text-2xl font-bold mb-6">Casino APP</h1>
             <nav className="flex flex-col gap-4">
                 <Link href="/" className="hover:bg-gray-700 p-2 rounded">Home</Link>
-                <Link href="/slotmachine" className="hover:bg-gray-700 p-2 rounded">Slotmachine</Link>
+                <Link href="/slotmachines" className="hover:bg-gray-700 p-2 rounded">Slotmachines</Link>
                 <Link href="/identitycheck" className="hover:bg-gray-700 p-2 rounded">Identitycheck</Link>
                 <Link href="/payment" className="hover:bg-gray-700 p-2 rounded">Payment</Link>
                 <Link href="/badges" className="hover:bg-gray-700 p-2 rounded">Stats</Link>

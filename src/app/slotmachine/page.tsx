@@ -1,6 +1,7 @@
 "use client";
 
-import React, { JSX, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function Page() {
     const symbols = [
@@ -29,7 +30,7 @@ export default function Page() {
     const spinner = () => {
         if (isSpinning) return;
         setIsSpinning(true);
-        setResult(null); // Reset Ergebnis beim Start
+        setResult(null);
 
         let count = 0;
         const interval = setInterval(() => {
@@ -64,7 +65,13 @@ export default function Page() {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white px-4">
+        <div className="relative flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white px-4">
+            <Link href="/slotmachines"
+                className="absolute top-6 left-6 px-4 py-2 bg-green-500  rounded-xl font-semibold shadow hover:bg-green-600 transition"
+            >
+                ← Back
+            </Link>
+
             <h1 className="text-4xl font-bold mb-6">Slot Machine</h1>
 
             <div className="grid grid-cols-3 gap-4 mb-8">
