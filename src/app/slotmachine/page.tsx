@@ -8,14 +8,17 @@ export default function Page() {
         "andreasFink.jpeg",
         "florianWeiss.jpg",
         "franzStimpfl.jpeg",
-        "sonjaRauchenwald.jpeg",
         "sabineSchlechta.jpg",
-        "martinFitz.jpeg"
+        "sonjaRauchenwald.jpeg",
+        "vinecentNussbaumer.jpeg"
     ];
 
     const [currentSymbols, setCurrentSymbols] = useState<string[]>([]);
     const [isSpinning, setIsSpinning] = useState(false);
     const [result, setResult] = useState<string | null>(null);
+
+    const winSound = typeof Audio !== "undefined" ? new Audio("/sounds/win.mp3") : null;
+    const loseSound = typeof Audio !== "undefined" ? new Audio("/sounds/lose.mp3") : null;
 
     useEffect(() => {
         const initialSymbols: string[] = [];
@@ -55,8 +58,10 @@ export default function Page() {
 
                     if (allEqual) {
                         setResult("🎉 Gewonnen!");
+                        winSound?.play();
                     } else {
                         setResult("❌ Nicht gewonnen");
+                        loseSound?.play();
                     }
                     return prev;
                 });
@@ -67,7 +72,7 @@ export default function Page() {
     return (
         <div className="relative flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white px-4">
             <Link href="/slotmachines"
-                className="absolute top-6 left-6 px-4 py-2 bg-green-500  rounded-xl font-semibold shadow hover:bg-green-600 transition"
+                  className="absolute top-6 left-6 px-4 py-2 bg-green-500  rounded-xl font-semibold shadow hover:bg-green-600 transition"
             >
                 ← Back
             </Link>
