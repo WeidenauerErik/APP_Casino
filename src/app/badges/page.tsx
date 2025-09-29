@@ -3,11 +3,8 @@
 import React, {useState} from "react";
 import medaille from "../assets/medaille.png";
 
-interface LevelProps {
-    mainPage?: boolean;
-}
 
-export default function Page({mainPage = true}: LevelProps){
+export default function Page(props){
     const [level, setLevel] = useState(1);
     const [XP, setXP] = useState(50);
     const maxXP = 120;
@@ -16,7 +13,7 @@ export default function Page({mainPage = true}: LevelProps){
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen text-white px-4">
-            {mainPage && (
+            {props.mainPage && (
                 <header className="flex items-center gap-4 mb-6">
                     <div id="badgeWrap"
                          className="w-20 h-20 rounded-xl bg-gray-50 flex items-center justify-center border border-gray-200 overflow-hidden">
@@ -42,13 +39,13 @@ export default function Page({mainPage = true}: LevelProps){
                             }}
                         ></div>
                     </div>
-                    {!mainPage && (
+                    {!props.mainPage && (
                         <p className="text-sm text-gray-500 mt-2">Level <span id="level">1</span> • <span
                             id="xpText">{XP} / {maxXP} XP</span></p>
                     )}
                 </div>
 
-                {mainPage && (
+                {props.mainPage && (
                     <div className="flex justify-between text-xs text-gray-500">
                         <span id="xpLeft">Noch {maxXP - XP} XP bis Level up!</span>
                     </div>
