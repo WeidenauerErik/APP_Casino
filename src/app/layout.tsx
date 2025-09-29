@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import Level from './badges/page';
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -38,6 +39,7 @@ export default function RootLayout({
                 <Link href="/payment" className="hover:bg-gray-700 p-2 rounded">Payment</Link>
                 <Link href="/badges" className="hover:bg-gray-700 p-2 rounded">Stats</Link>
             </nav>
+            <Level mainPage={false}></Level>
         </aside>
 
         {/* Main content */}

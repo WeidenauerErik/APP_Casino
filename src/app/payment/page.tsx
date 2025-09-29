@@ -1,15 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import {useEffect, useState} from "react";
 
 export default function Page() {
 
     const [selectedMethod, setSelectedMethod] = useState('card');
+    const [credit, setCredit] = useState(0);
+    const [amount, setAmount] = useState<number | "">("");
+
+    useEffect(() => {
+        let storedCredit = localStorage.getItem("credit");
+        if (!storedCredit) {
+            localStorage.setItem("credit", "100");
+            storedCredit = "100";
+        }
+        setCredit(Number(storedCredit));
+    }, []);
+
+    function addCredit() {
+        const newCredit = credit + Number(amount);
+        localStorage.setItem("credit", newCredit.toString());
+        setCredit(newCredit);
+    }
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-center text-white px-4">
             <h1 className="text-4xl font-bold mb-8">Aktuelles Guthaben</h1>
-            <div className="text-6xl font-extrabold text-green-400 mb-12">€ 150,00</div>
+            <div className="text-6xl font-extrabold text-green-400 mb-12">€ { credit }</div>
 
             <h2 className="text-2xl font-semibold mb-6">Zahlungsmethode auswählen</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -66,8 +83,9 @@ export default function Page() {
                         <div className="flex gap-3">
                             <input type="text" placeholder="MM/YY" className="w-1/2 p-2 rounded bg-gray-700 text-white"/>
                             <input type="text" placeholder="CVV" className="w-1/2 p-2 rounded bg-gray-700 text-white"/>
+                            <input type="text" placeholder="Betrag" className="w-1/2 p-2 rounded bg-gray-700 text-white" value={amount} onChange={(e) => setAmount(Number(e.target.value))}/>
                         </div>
-                        <button className="mt-4 w-full bg-green-500 p-2 rounded font-semibold hover:bg-green-600 transition">Zahlen</button>
+                        <button className="mt-4 w-full bg-green-500 p-2 rounded font-semibold hover:bg-green-600 transition" onClick={() => {addCredit()}}>Zahlen</button>
                     </div>
                 )}
 
@@ -75,16 +93,22 @@ export default function Page() {
                     <div className="p-6 bg-gray-800 rounded-2xl shadow mb-4">
                         <h3 className="text-xl font-semibold mb-4">Bankeinzug</h3>
                         <input type="text" placeholder="IBAN" className="w-full mb-3 p-2 rounded bg-gray-700 text-white"/>
-                        <input type="text" placeholder="BIC" className="w-full mb-3 p-2 rounded bg-gray-700 text-white"/>
-                        <button className="mt-4 w-full bg-green-500 p-2 rounded font-semibold hover:bg-green-600 transition">Zahlen</button>
+                        <div className="flex gap-3">
+                            <input type="text" placeholder="BIC" className="w-full mb-3 p-2 rounded bg-gray-700 text-white"/>
+                            <input type="text" placeholder="Betrag" id="betrag_bank" className="w-1/2 h-fit p-2 rounded bg-gray-700 text-white" value={amount} onChange={(e) => setAmount(Number(e.target.value))}/>
+                        </div>
+                        <button className="mt-4 w-full bg-green-500 p-2 rounded font-semibold hover:bg-green-600 transition" onClick={() => {addCredit()}}>Zahlen</button>
                     </div>
                 )}
 
                 {selectedMethod === "apple" && (
                     <div className="p-6 bg-gray-800 rounded-2xl shadow mb-4">
                         <h3 className="text-xl font-semibold mb-4">Apple Pay</h3>
-                        <p className="mb-4">Klicken Sie auf den Button, um mit Apple Pay zu bezahlen.</p>
-                        <button className="w-full bg-green-500 p-2 rounded font-semibold hover:bg-green-600 transition">Apple Pay verwenden</button>
+                        <p className="">Klicken Sie auf den Button, um mit Apple Pay zu bezahlen.</p>
+                        <div className="flex gap-3 my-4">
+                            <input type="text" placeholder="Betrag" id="betrag_bank" className="w-1/2 h-fit p-2 rounded bg-gray-700 text-white" value={amount} onChange={(e) => setAmount(Number(e.target.value))}/>
+                        </div>
+                        <button className="w-full bg-green-500 p-2 rounded font-semibold hover:bg-green-600 transition" onClick={() => {addCredit()}}>Apple Pay verwenden</button>
                     </div>
                 )}
             </div>
