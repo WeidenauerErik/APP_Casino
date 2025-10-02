@@ -16,7 +16,7 @@ export default function Page() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl mb-12">
 
-                <Link href="/slotmachine" className="p-6 bg-gray-800 rounded-2xl shadow hover:shadow-xl hover:bg-gray-700 transition">
+                <Link href="/slotmachines" className="p-6 bg-gray-800 rounded-2xl shadow hover:shadow-xl hover:bg-gray-700 transition">
                     <img
                         src="https://img.icons8.com/ios-filled/100/ffffff/dice.png"
                         alt="Casino Games"

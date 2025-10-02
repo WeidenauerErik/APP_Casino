@@ -31,7 +31,7 @@ export default function Page() {
                         key={slot.id}
                         className="p-6 bg-gray-800 rounded-2xl shadow hover:shadow-xl hover:bg-gray-700 transition flex flex-col items-center text-center"
                     >
-                        <img src={slot.image} alt={slot.name} className="mb-4 h-50" />
+                        <img src={slot.image} alt={slot.name} className="mb-4 h-50"/>
                         <h2 className="text-xl font-semibold mb-2">{slot.name}</h2>
                         <p className="text-sm opacity-80 mb-4">{slot.description}</p>
                         <button className="mt-auto px-6 py-2 rounded-xl bg-green-500 font-semibold shadow hover:bg-green-600 transition">
